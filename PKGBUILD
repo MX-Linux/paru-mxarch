@@ -3,7 +3,7 @@
 
 # paru for the [mxarch] repository, built on the Open Build Service
 # (home:mx-packaging/paru). Adapted from the AUR package, whose PKGBUILD is kept
-# in aur/PKGBUILD for comparison.
+# in PKGBUILD.aur for comparison.
 #
 # OBS build VMs have no network, so the AUR's prepare() - cargo update and
 # cargo fetch - cannot run there. update.sh does that on GitHub Actions and

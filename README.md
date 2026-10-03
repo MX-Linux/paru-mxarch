@@ -32,7 +32,7 @@ OBS _service downloads releases/latest/download/* → build → [mxarch]
 (new dependency, new installed file) are ported by hand:
 
 1. Apply the change from the printed diff to `PKGBUILD`.
-2. Copy the current AUR file to `aur/PKGBUILD`.
+2. Copy the current AUR file to `PKGBUILD.aur`.
 3. Push. The push runs the workflow, which publishes the new version.
 
 ## Packaging-only change

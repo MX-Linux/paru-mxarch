@@ -39,12 +39,12 @@ aur_sum=$(srcinfo sha256sums)
 # there beyond the version - a new dependency, a new install line - has to be
 # ported by hand. Stop rather than publish a package that silently diverges.
 strip_version() { grep -vE '^(pkgver|pkgrel|sha256sums)=' "$1"; }
-if ! diff -u <(strip_version aur/PKGBUILD) <(strip_version "$work/aur-PKGBUILD"); then
+if ! diff -u <(strip_version PKGBUILD.aur) <(strip_version "$work/aur-PKGBUILD"); then
     echo "::error::The AUR PKGBUILD changed beyond its version (diff above)." \
-        "Port the change into PKGBUILD, copy the AUR file to aur/PKGBUILD, and push." >&2
+        "Port the change into PKGBUILD, copy the AUR file to PKGBUILD.aur, and push." >&2
     exit 1
 fi
-cp "$work/aur-PKGBUILD" aur/PKGBUILD
+cp "$work/aur-PKGBUILD" PKGBUILD.aur
 
 # --- Decide what to publish -------------------------------------------------
 
@@ -103,7 +103,7 @@ if [[ ${GITHUB_ACTIONS:-} == true ]]; then
     git config user.name 'github-actions[bot]'
     git config user.email '41898273+github-actions[bot]@users.noreply.github.com'
 fi
-git add PKGBUILD aur/PKGBUILD
+git add PKGBUILD PKGBUILD.aur
 git diff --cached --quiet || git commit -q -m "Update to $ver-$rel"
 git push -q
 

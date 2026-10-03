@@ -1,0 +1,15 @@
+<services>
+  <!-- Copy of the _service in home:mx-packaging/paru on OBS; OBS does not read
+       it from here. Everything comes from the latest GitHub release so the
+       PKGBUILD and the tarballs it checksums always match. update.sh triggers
+       this service after publishing a release. -->
+  <service name="download_url">
+    <param name="url">https://github.com/MX-Linux/paru-mxarch/releases/latest/download/PKGBUILD</param>
+  </service>
+  <service name="download_url">
+    <param name="url">https://github.com/MX-Linux/paru-mxarch/releases/latest/download/paru-source.tar.gz</param>
+  </service>
+  <service name="download_url">
+    <param name="url">https://github.com/MX-Linux/paru-mxarch/releases/latest/download/paru-vendor.tar.zst</param>
+  </service>
+</services>

@@ -1,0 +1,35 @@
+name: Update
+
+on:
+  schedule:
+    - cron: '23 5 * * *'
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: update
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - run: ./update.sh
+        env:
+          GH_TOKEN: ${{ github.token }}
+          OBS_TOKEN: ${{ secrets.OBS_TOKEN }}
+
+      # GitHub disables scheduled workflows in a repository with no activity
+      # for 60 days, and paru releases are rarer than that. Re-enabling the
+      # workflow counts as activity.
+      - name: Keep the schedule alive
+        if: github.event_name == 'schedule'
+        run: gh api -X PUT "repos/$GITHUB_REPOSITORY/actions/workflows/update.yml/enable"
+        env:
+          GH_TOKEN: ${{ github.token }}

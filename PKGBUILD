@@ -19,13 +19,15 @@
 
 pkgname=paru
 pkgver=2.1.0
-pkgrel=2
+pkgrel=2.1
 pkgdesc='Feature packed AUR helper'
 url='https://github.com/Morganamilo/paru'
 arch=('x86_64')
 license=('GPL-3.0-or-later')
 depends=('git' 'pacman' 'libalpm.so>=14')
-makedepends=('cargo' 'gettext')
+# rust rather than the AUR's cargo: both rust and rustup provide cargo, and
+# OBS refuses to choose ("have choice for cargo").
+makedepends=('rust' 'gettext')
 optdepends=('bat: colored pkgbuild printing'
             'devtools: build in chroot and downloading pkgbuilds')
 backup=('etc/paru.conf')

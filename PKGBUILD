@@ -32,8 +32,8 @@ backup=('etc/paru.conf')
 source=('paru-source.tar.gz'
         'paru-vendor.tar.zst')
 noextract=('paru-vendor.tar.zst')
-sha256sums=('SKIP'
-            'SKIP')
+sha256sums=('eea4dbb524db765d5316f540f9ee670c0bf81aae4827b5417eebb4c9b5651727'
+            'b548decc2c785df615c4bd7f0cee90b0b22fbad1fa5be6017bc775f8eeca6d72')
 
 prepare() {
     cd "$pkgname-$pkgver"

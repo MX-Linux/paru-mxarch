@@ -17,8 +17,8 @@
 # and push. See README.md.
 
 pkgname=paru
-pkgver=2.1.0
-pkgrel=2.1
+pkgver=2.2.0
+pkgrel=1
 pkgdesc='Feature packed AUR helper'
 url='https://github.com/Morganamilo/paru'
 arch=('x86_64')
@@ -33,8 +33,8 @@ backup=('etc/paru.conf')
 source=('paru-source.tar.gz'
         'paru-vendor.tar.zst')
 noextract=('paru-vendor.tar.zst')
-sha256sums=('eea4dbb524db765d5316f540f9ee670c0bf81aae4827b5417eebb4c9b5651727'
-            'b548decc2c785df615c4bd7f0cee90b0b22fbad1fa5be6017bc775f8eeca6d72')
+sha256sums=('213d55a67605ff69faefa523917fee7168ea5bf143be8cef800fb48c9759f348'
+            '740a3532f18e6dea04268dbeb4332f50a753c97c8f43f47b01a77ae5954330d7')
 
 prepare() {
     cd "$pkgname-$pkgver"

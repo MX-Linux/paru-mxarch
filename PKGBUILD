@@ -5,13 +5,12 @@
 # (home:mx-packaging/paru). Adapted from the AUR package, whose PKGBUILD is kept
 # in PKGBUILD.aur for comparison.
 #
-# OBS build VMs have no network, so the AUR's prepare() - cargo update and
-# cargo fetch - cannot run there. update.sh does that on GitHub Actions and
+# OBS build VMs have no network, so the AUR's prepare() - cargo fetch - cannot
+# run there. update.sh vendors the locked crates on GitHub Actions and
 # publishes the results as release assets, which the OBS _service downloads:
 #   paru-source.tar.gz   upstream's release tarball, checked against the AUR's
 #                        sha256sum
-#   paru-vendor.tar.zst  Cargo.lock and vendor/ after the AUR's
-#                        "cargo update alpm alpm-utils"
+#   paru-vendor.tar.zst  upstream Cargo.lock and the crates it locks in vendor/
 #
 # update.sh rewrites pkgver, pkgrel and sha256sums - do not edit them by hand,
 # except to publish a packaging-only change: bump pkgrel to a decimal (2 -> 2.1)
@@ -24,7 +23,7 @@ pkgdesc='Feature packed AUR helper'
 url='https://github.com/Morganamilo/paru'
 arch=('x86_64')
 license=('GPL-3.0-or-later')
-depends=('git' 'pacman' 'libalpm.so>=14')
+depends=('git' 'pacman>=7.1' 'libalpm.so')
 # rust rather than the AUR's cargo: both rust and rustup provide cargo, and
 # OBS refuses to choose ("have choice for cargo").
 makedepends=('rust' 'gettext')

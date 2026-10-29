@@ -74,8 +74,7 @@ echo "$aur_sum  $work/paru-source.tar.gz" | sha256sum -c --quiet
 tar -xzf "$work/paru-source.tar.gz" -C "$work"
 (
     cd "$work/paru-$ver"
-    # What the AUR's prepare() does before fetching.
-    cargo update alpm alpm-utils
+    # Preserve upstream's lockfile, as the AUR's prepare() does.
     cargo vendor --locked vendor >/dev/null
     tar --sort=name --owner=0 --group=0 --numeric-owner --mtime=@0 \
         -cf - Cargo.lock vendor

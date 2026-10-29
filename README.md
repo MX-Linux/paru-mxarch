@@ -22,7 +22,7 @@ OBS _service downloads releases/latest/download/* → build → [mxarch]
   see them as upgrades.
 - **Why vendored crates:** OBS builds have no network, so the AUR's
   `cargo fetch` cannot run there. `update.sh` vendors the crates on GitHub
-  Actions instead, after the same `cargo update alpm alpm-utils` as the AUR.
+  Actions instead, preserving upstream's `Cargo.lock` as the AUR does.
 - **Upstream tarball** is the one the AUR builds, checked against the AUR's
   sha256sum before it is republished.
 

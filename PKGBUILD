@@ -23,7 +23,7 @@ pkgdesc='Feature packed AUR helper'
 url='https://github.com/Morganamilo/paru'
 arch=('x86_64')
 license=('GPL-3.0-or-later')
-depends=('git' 'pacman>=7.1' 'libalpm.so')
+depends=('git>=2.40' 'pacman>=7.1' 'libalpm.so' 'libssl.so' 'libcrypto.so')
 # rust rather than the AUR's cargo: both rust and rustup provide cargo, and
 # OBS refuses to choose ("have choice for cargo").
 makedepends=('rust' 'gettext')
